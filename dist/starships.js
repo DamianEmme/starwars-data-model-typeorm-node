@@ -24,42 +24,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.User = void 0;
+exports.Starships = void 0;
 var typeorm_1 = require("typeorm");
-var Favorites_1 = require("./Favorites");
-// import {Planet} from "./Planet"
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var Starships = /** @class */ (function (_super) {
+    __extends(Starships, _super);
+    function Starships() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "id");
+    ], Starships.prototype, "id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "first_name");
+    ], Starships.prototype, "name");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "last_name");
+    ], Starships.prototype, "description");
     __decorate([
-        typeorm_1.Column({ unique: true }),
+        typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "email");
+    ], Starships.prototype, "img_URL");
     __decorate([
-        typeorm_1.Column({ unique: true }),
+        typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "password");
+    ], Starships.prototype, "model");
     __decorate([
-        typeorm_1.OneToMany(function () { return Favorites_1.Favorites; }, function (favorites) { return Favorites_1.Favorites.User; }),
-        __metadata("design:type", Array)
-    ], User.prototype, "favorites");
-    User = __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Starships.prototype, "cost");
+    Starships = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Starships);
+    return Starships;
 }(typeorm_1.BaseEntity));
-exports.User = User;
+exports.Starships = Starships;
