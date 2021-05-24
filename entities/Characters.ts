@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne, OneToMany } from "typeorm"
-import { Favorites } from "./Favorites"
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, OneToMany, JoinTable } from "typeorm"
 import { Planets } from "./Planets"
+import { User } from "./User"
 
 @Entity()
 export class Characters extends BaseEntity {
@@ -31,9 +31,9 @@ export class Characters extends BaseEntity {
     @Column()
     planetId: number;
 
-    @ManyToOne(() => Favorites, favorites => favorites.characters)
-    favorites: Favorites;
-    static Favorites: any
+    @ManyToMany(() => User)
+    @JoinTable()
+    users: User[];
 
     @OneToMany(() => Planets, planets => Planets.Characters)
     planets: Planets[];

@@ -26,7 +26,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Starships = void 0;
 var typeorm_1 = require("typeorm");
-var Favorites_1 = require("./Favorites");
+var User_1 = require("./User");
 var Starships = /** @class */ (function (_super) {
     __extends(Starships, _super);
     function Starships() {
@@ -57,9 +57,10 @@ var Starships = /** @class */ (function (_super) {
         __metadata("design:type", Number)
     ], Starships.prototype, "cost");
     __decorate([
-        typeorm_1.ManyToOne(function () { return Favorites_1.Favorites; }, function (favorites) { return favorites.starships; }),
-        __metadata("design:type", Favorites_1.Favorites)
-    ], Starships.prototype, "favorites");
+        typeorm_1.ManyToMany(function () { return User_1.User; }),
+        typeorm_1.JoinTable(),
+        __metadata("design:type", Array)
+    ], Starships.prototype, "users");
     Starships = __decorate([
         typeorm_1.Entity()
     ], Starships);

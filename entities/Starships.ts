@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from "typeorm"
-import {Favorites} from "./Favorites"
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, ManyToOne, JoinTable} from "typeorm"
+import {User} from "./User"
 
 @Entity ()
 export class Starships extends BaseEntity {
@@ -21,9 +21,8 @@ export class Starships extends BaseEntity {
     @Column()
     cost: number;
 
-    @ManyToOne(() => Favorites, (favorites: { starships: any }) => favorites.starships)
-    favorites: Favorites;
-    static Favorites: any
-
+    @ManyToMany(() => User)
+    @JoinTable()
+    users: User[];
 
 }

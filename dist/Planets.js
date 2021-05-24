@@ -26,7 +26,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Planets = void 0;
 var typeorm_1 = require("typeorm");
-var Favorites_1 = require("./Favorites");
+var User_1 = require("./User");
 var Characters_1 = require("./Characters");
 var Planets = /** @class */ (function (_super) {
     __extends(Planets, _super);
@@ -58,9 +58,10 @@ var Planets = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Planets.prototype, "climate");
     __decorate([
-        typeorm_1.ManyToOne(function () { return Favorites_1.Favorites; }, function (favorites) { return favorites.planets; }),
-        __metadata("design:type", Favorites_1.Favorites)
-    ], Planets.prototype, "favorites");
+        typeorm_1.ManyToMany(function () { return User_1.User; }),
+        typeorm_1.JoinTable(),
+        __metadata("design:type", Array)
+    ], Planets.prototype, "users");
     __decorate([
         typeorm_1.ManyToOne(function () { return Characters_1.Characters; }, function (characters) { return characters.planets; }),
         __metadata("design:type", Characters_1.Characters)
